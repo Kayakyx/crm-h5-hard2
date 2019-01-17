@@ -15,9 +15,12 @@
             //模拟登录
             login(){
                 sessionStorage.setItem('isLogin','1');
-                this.$router.push({name: 'Work'});
+                //跳回用户想去页
+                let path = this.$route.query.redirect;
+                this.$router.replace(path);
             }
         }
+
     }
 </script>
 

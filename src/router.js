@@ -2,7 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import Home from './views/Home.vue'
 
-Vue.use(Router)
+Vue.use(Router);
 
 let router = new Router({
   routes: [
@@ -72,7 +72,8 @@ router.beforeEach( (to, from, next)=>{
     if(isLogin || to.path === '/login'){ //已登录或直接去登录页
         next();//放行
     }else{
-        router.push('/login');
+        //跳转/login,并把用户原本访问的路由传过去
+        router.push({path: '/login', query: {redirect: to.path} });
     }
 
 } );
